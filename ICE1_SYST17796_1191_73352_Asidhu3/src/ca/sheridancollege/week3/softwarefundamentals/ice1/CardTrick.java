@@ -17,7 +17,7 @@ public class CardTrick {
     public static void main(String[] args)
     {
         int i=0;
-        Card[] c = new Card[7];
+        Card[] c = new changedcard[7];
         
          Scanner Card1 = new Scanner(System.in);
          System.out.println("Enter the card value : "+Card1);
