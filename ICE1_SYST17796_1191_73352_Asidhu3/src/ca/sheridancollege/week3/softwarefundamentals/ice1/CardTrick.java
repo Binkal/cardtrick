@@ -16,38 +16,55 @@ public class CardTrick {
     
     public static void main(String[] args)
     {
-        int i=0;
-        Card[] c = new changedcard[7];
+       Card[] magicHand = new Card[7];
         
-         Scanner Card1 = new Scanner(System.in);
-         System.out.println("Enter the card value : "+Card1);
-         
-         Scanner Suit1 = new Scanner(System.in);
-         System.out.println("Enter the card value : "+Suit1);
-        
-        
-        
-       for(i=0; i<c.length; i++) 
-        {
-           c[i] = new Card();
-            c[i].setValue((int)(Math.random()*7 +1));
-            c[i].setSuit(Card.SUITS[(int)(Math.random()*3 +1)]);
+        for(int i=0; i<magicHand.length; i++){
+            Card c = new Card();
+            c.setValue((int)(Math.random()*7+1));
+            c.setSuit(Card.SUITS[(int)(Math.random()*3+1)]);
+            magicHand[i]=c;
             
-            if(Card1==Suit1){
-                System.out.println("card is lucky");
             }
-            else{
-                 System.out.println("card is not lucky");
+        Card useru = new Card();
+        int suit;
+        Scanner Cardu = new Scanner(System.in);
+        
+       do{
+            System.out.print("Please enter the suit value="+Cardu);
+            suit = Cardu.nextInt();
+            Cardu.nextLine();
+            switch(suit){
+                case 1 :
+                    useru.setSuit("Hearts");
+                    break;
+                case 2 :
+                    useru.setSuit("Spade");
+                    break;
+                case 3 :
+                    useru.setSuit("Diamond");
+                    break;
+                case 4 :
+                    useru.setSuit("Club");
+                    break;  
             }
-                
-            
-            //c.setValue(insert call to random number generator here)
-            //c.setSuit(Card.SUITS[insert call to random number between 0-3 here])
+        }while(suit<1||suit>4);
+        boolean result = false;
+        for(int i=0; i<magicHand.length; i++){
+            if(magicHand[i].getValue()==useru.getValue())
+                result = true;
+            else
+                result = false;
         }
-         
+        if(result==true){
+            System.out.println("Bravo! There is a match");
+        }
+        else
+            System.out.println("Sorry! There is a no match");
+        }  
+  
         //insert code to ask the user for Card value and suit, create their card
         // and search magicHand here
         //Then report the result here
-    }
+    
     
 }
